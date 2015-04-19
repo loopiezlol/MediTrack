@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -16,6 +18,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     private Toolbar toolbar;
     private ViewPagerAdapter adapter;
     private SlidingTabLayout tabs;
+    public DatabaseHelper dbHelper;
     CharSequence Titles[]={"Pharms","Map","Meds"};
     int NumberOfTabs = 3;
 
@@ -45,6 +48,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         tabs.setViewPager(pager);
 
         pager.setCurrentItem(1);
+
+        if(getHelper().getPharmDao().queryForAll().size() ==0) {
+            Pharm pharm = new Pharm(25,"alo","da");
+            getHelper().getPharmDao().create(pharm);
+        }
 
 
 
@@ -86,5 +94,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
+    }
+
+    public DatabaseHelper getHelper() {
+        if (dbHelper == null) {
+            dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+        }
+        return dbHelper;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (dbHelper != null) {
+            OpenHelperManager.releaseHelper();
+            dbHelper = null;
+        }
     }
 }
