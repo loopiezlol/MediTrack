@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(),Titles,NumberOfTabs);
+        adapter = new ViewPagerAdapter(getFragmentManager(),Titles,NumberOfTabs);
 
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
@@ -45,6 +45,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         tabs.setViewPager(pager);
 
         pager.setCurrentItem(1);
+
+
 
     }
 

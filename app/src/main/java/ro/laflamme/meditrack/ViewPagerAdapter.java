@@ -1,8 +1,9 @@
 package ro.laflamme.meditrack;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v13.app.FragmentStatePagerAdapter;
 
 /**
  * Created by loopiezlol on 18.04.2015.
@@ -26,7 +27,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 PharmsFragment pF = new PharmsFragment();
                 return  pF;
             case 1:
-                MapFragment mF = new MapFragment();
+                MapCustomFragment mF = new MapCustomFragment();
                 return mF;
             case 2:
                 MedsFragment mdF = new MedsFragment();
