@@ -17,8 +17,7 @@ public class PharmsLoader extends AsyncTaskLoader<List<Pharm>> {
 
     @Override
     public List<Pharm> loadInBackground() {
-        return  getHelper().getPharmDao().queryForAll();
-
+        return getHelper().getPharmDao().queryForAll();
     }
 
     @Override
@@ -31,7 +30,6 @@ public class PharmsLoader extends AsyncTaskLoader<List<Pharm>> {
         if (isStarted()) {
             super.deliverResult(data);
         }
-
     }
 
     @Override

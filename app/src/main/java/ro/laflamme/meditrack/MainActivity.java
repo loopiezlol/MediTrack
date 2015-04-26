@@ -47,13 +47,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         tabs.setViewPager(pager);
 
-        pager.setCurrentItem(1);
+        pager.setCurrentItem(0);
 
         if(getHelper().getPharmDao().queryForAll().size() ==0) {
             Pharm pharm = new Pharm(25,"alo","da");
             getHelper().getPharmDao().create(pharm);
         }
-
 
 
     }

@@ -1,6 +1,7 @@
 package ro.laflamme.meditrack;
 
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -21,39 +23,23 @@ import java.util.List;
 /**
  * Created by loopiezlol on 18.04.2015.
  */
-public class PharmsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Pharm>> {
+public class PharmsFragment extends ListFragment implements LoaderManager.LoaderCallbacks<List<Pharm>> {
 
-    private PharmsAdapter adapter;
-    private RecyclerView recyclerView;
+    private static final int LOADER_ID = 1;
 
-    public DatabaseHelper dbHelper;
+    private ArrayAdapter adapter;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        View v =inflater.inflate(R.layout.pharms_fragment,container,false);
-        return v;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
-
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.pharms_recycler_view);
-        initView();
-
-        Toast.makeText(getActivity(),Integer.toString(getHelper().getPharmDao().queryForAll().size()), Toast.LENGTH_SHORT).show();
+        adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1);
+        setEmptyText("No pharms.");
+        setListAdapter(adapter);
 
 
-    }
-
-    private void initView() {
-        adapter = new PharmsAdapter(getActivity());
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setVisibility(View.VISIBLE);
-        recyclerView.setClickable(true);
+        getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
 
@@ -65,29 +51,12 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
 
     @Override
     public void onLoadFinished(Loader<List<Pharm>> loader, List<Pharm> data){
-        List<Item> items = new ArrayList<Item>(data);
-        adapter.setData(items);
-        recyclerView.getAdapter().notifyDataSetChanged();
+        adapter.addAll(data);
     }
 
     @Override
     public void onLoaderReset(Loader<List<Pharm>> loader){
-        adapter.setData(null);
+        adapter.clear();
     }
 
-    public DatabaseHelper getHelper() {
-        if (dbHelper == null) {
-            dbHelper = OpenHelperManager.getHelper(getActivity(), DatabaseHelper.class);
-        }
-        return dbHelper;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (dbHelper != null) {
-            OpenHelperManager.releaseHelper();
-            dbHelper = null;
-        }
-    }
 }
