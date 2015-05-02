@@ -37,6 +37,7 @@ public class PharmsLoader extends AsyncTaskLoader<List<Pharm>> {
         if (mData != null) {
             deliverResult(mData);
         }
+        forceLoad();
     }
 
     @Override
