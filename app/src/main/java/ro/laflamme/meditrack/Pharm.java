@@ -12,6 +12,7 @@ public class Pharm extends Item {
     public static final String KEY_ID ="_id";
     public static final String KEY_NAME ="name";
     public static final String KEY_DESC="desc";
+    private static final String KEY_REFFERENCE = "refference";
 
     @DatabaseField(id = true, columnName = KEY_ID)
     private int id;
@@ -19,6 +20,8 @@ public class Pharm extends Item {
     private String name;
     @DatabaseField(columnDefinition = KEY_DESC)
     private String desc;
+    @DatabaseField(columnDefinition = KEY_REFFERENCE)
+    private String refference;
 
     public Pharm() {
     }
@@ -68,4 +71,11 @@ public class Pharm extends Item {
         return this.desc;
     }
 
+    public String getRefference() {
+        return refference;
+    }
+
+    public void setRefference(String refference) {
+        this.refference = refference;
+    }
 }

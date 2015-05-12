@@ -17,7 +17,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private String LOG_TAG = DatabaseHelper.class.getSimpleName();
 
     public static final String DATABASE_NAME = "meditrack.db";
-    public static final int DATABASE_VERSION = 6;
+    public static final int DATABASE_VERSION = 7;
 
     private RuntimeExceptionDao<Pharm,Integer> pharmRuntimeDao =null;
 

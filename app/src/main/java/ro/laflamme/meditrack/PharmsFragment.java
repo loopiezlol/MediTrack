@@ -4,11 +4,13 @@ import android.app.Fragment;
 import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Loader;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,33 +18,59 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.melnykov.fab.FloatingActionButton;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by loopiezlol on 18.04.2015.
  */
-public class PharmsFragment extends ListFragment implements LoaderManager.LoaderCallbacks<List<Pharm>> {
+public class PharmsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Pharm>> {
 
     private static final int LOADER_ID = 1;
 
-    private ArrayAdapter adapter;
+    private PharmsAdapter adapter;
+    private RecyclerView recyclerView;
+    private FloatingActionButton fab;
 
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.pharms_fragment, null);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.pharms_recycler_view);
+        fab = (FloatingActionButton) rootView.findViewById(R.id.fab_refresh);
+
+        return rootView;
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1);
-        setEmptyText("No pharms.");
-        setListAdapter(adapter);
+        adapter = new PharmsAdapter(getActivity());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView.setClickable(true);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pharm
+            }
+        });
 
         getLoaderManager().initLoader(LOADER_ID, null, this);
+
     }
-
-
 
     @Override
     public Loader<List<Pharm>> onCreateLoader(int id, Bundle args){
@@ -51,8 +79,10 @@ public class PharmsFragment extends ListFragment implements LoaderManager.Loader
 
     @Override
     public void onLoadFinished(Loader<List<Pharm>> loader, List<Pharm> data){
-        adapter.addAll(data);
+        adapter.setData(data);
     }
+
+
 
     @Override
     public void onLoaderReset(Loader<List<Pharm>> loader){
