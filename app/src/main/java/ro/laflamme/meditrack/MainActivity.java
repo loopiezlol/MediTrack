@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 
-
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     private ViewPager pager;
@@ -49,11 +48,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         tabs.setViewPager(pager);
 
         pager.setCurrentItem(0);
-//
-//        if(getHelper().getPharmDao().queryForAll().size() ==0) {
-//            Pharm pharm = new Pharm(25,"alo","da");
-//            getHelper().getPharmDao().create(pharm);
-//        }
+
 
 
     }

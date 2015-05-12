@@ -2,242 +2,207 @@
 <items version="2" >
 
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-676cac7e4bfcc0f595c5b0d7faf7e4989f8fee2f.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-6ebee0b69841fe716561cdd07aef34f6ff6674ea.jar" />
-    </item>
-    <item
-        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.48/afa06f539a4026c10b247386312aa67404b80a16/ormlite-android-4.48.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/ormlite-android-4.48-4d377ea34bde93cd7f753222be7ed6f1835469d6.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-a0a7e0f8d013974282e20769a6cbefb89b06667e.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-07d7095b23626f4586c246c7c6e32894efaf2d2e.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-26e6358c396b8cc5945984a5e1eefe3fc3b38b05.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-f3c1c6edfc9c5ca1ed58b3ae8290bb7dfc17ba00.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-85ffa923180c0d45b2dbdea3bd21330d39260c2f.jar" />
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-5a2fdf2e8902b5ffd39e079c3c5a8e7fcfb2cf5d.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-a215367fa56ac7c8102838691911d25940c4d11d.jar" />
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-40d83e1da6d32fb940c64e25287889d640d922f4.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/classes.jar"
+        jar="/home/loopiezlol/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.48/afa06f539a4026c10b247386312aa67404b80a16/ormlite-android-4.48.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-1ff283141b223a9a5f76a7e2713643a59d024b6f.jar" />
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/ormlite-android-4.48-11baa705d26a6c35ce695b5b6ae46976ea990247.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-c2fb085dbf3ad8d7a5318e70251430e0d5621e59.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="055783146ba9654a725442563be78cad303aad1f">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-d30fbb59bbf5404696240c1e7790659468a3a611.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-8fec392cc17b0d99aba21e5b1914e4fbde84b003.jar" />
-    </item>
-    <item
-        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.48/e579bd2905d0399af5029aaaf9817d5fa0ca88a5/ormlite-core-4.48.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/ormlite-core-4.48-dc968867ac395b2faf12f89bdf94e26d23b14fb1.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-49ebcc8a980be5a70af99bd6f9dad6765e7a0665.jar" />
-    </item>
-    <item
-        jar="/home/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-503895007e916738f90667682246d15f6350ee9d.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-c981e8e1e04ec25051004f1d6987def450c55814.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-64bb03b198a03d6b30ab5be89aa213a86547ba7e.jar" />
-    </item>
-    <item
-        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/okio-1.3.0-4a44b6940264f79f4d4215f38d645bb2fed037d3.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-c8be5b2344da3f47fbcc38a8cca22774fbf2c48c.jar" />
-    </item>
-    <item
-        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-jdbc/4.48/b915ebd2c4b901eec32e4df44e5503752e92ce38/ormlite-jdbc-4.48.jar"
+        jar="/home/loopiezlol/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-jdbc/4.48/b915ebd2c4b901eec32e4df44e5503752e92ce38/ormlite-jdbc-4.48.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="b915ebd2c4b901eec32e4df44e5503752e92ce38">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/ormlite-jdbc-4.48-b2eecdb0be738ac9b8709650515f9a089d7f3208.jar" />
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/ormlite-jdbc-4.48-721e58cd4628559625166614ce6a3f0b0f4e6d21.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.2.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-8817187933e49c879225c0b120160ce67f066de3.jar" />
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-94c53039ec5fef4daa77c7017ab6641781e0da03.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jar="/home/loopiezlol/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-core/4.48/e579bd2905d0399af5029aaaf9817d5fa0ca88a5/ormlite-core-4.48.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-e954de73e2443fb7d6c4745ff7393c468d833937.jar" />
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/ormlite-core-4.48-bf15f70c3a53eeb347d1de20a8747335ed064b46.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/libs/internal_impl-21.0.3.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-b3a96c36249871e734a4e2f2f94025910b9b4c42.jar" />
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-12a0c0eefb5d29fa714e07cfa0f912eabebbee78.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-010e66bf33202e9fc1334c76d20d5812708e42a0.jar" />
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-df82b74ed4ae2d7f8f66d8e81ea60509b660ecae.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-f4cca68fb1c8f2298320aaee59d1d63cd3af7a73.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-26125d2630135efb69620bb501edb16d84a01d03.jar" />
-    </item>
-    <item
-        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/library-2.4.0-042af4ca82b78c8a6e4dec3520e4c88704eb3011.jar" />
-    </item>
-    <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-617da116bf9f2f2946d0b7b6bce99e85ffc134a4.jar" />
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-ade8eb1bbc88015646e32b6a6f740bba95d5b4ef.jar" />
     </item>
     <item
-        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/2e7bc7033dc2c8423e661224171b3133fb155b28/okhttp-2.3.0.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/okhttp-2.3.0-9a1a9484bd40aa396c187790cb30cbc6d3a68995.jar" />
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-6785e988d75d52a2b859dcdfe3c154617ccc3e20.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-bf9b837bef2a4d2fa9ddd01be5f1add3a501f3a8.jar" />
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-ea7c78c933d375537c9551467bafe4624b666758.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-8f8c4c68b3bea3a50e33997f911fd87512e17fcc.jar" />
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-f8fc6b9276b4a4d363c67efb3036f48206e03593.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-93699c50dde9a165acf4ea838d7bb6e16d954e5b.jar" />
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-8c8a6c4288bed4db01d4c7482e58700fdeb553f6.jar" />
     </item>
     <item
-        jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
-        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-82822bb87b0e1a7b3ee50e5d0d247be9c6ee7a15.jar" />
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-89997a2014537d7b856a62a203a21e7b624854e8.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-48d562539505c7c46080164024192126ab61ed29.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-6245565b1444f55f71641ed2a67a2efe8672b6fe.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-522ff030b6196adfb2a62b8d60f8fbc2a0562cc5.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-0406d989d352de92e3cfaa88fd48bb509162a80f.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-ed6ad4124a0a22a6948fd52a74bb7d363aeef3c8.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-2a8627ce237da1f056241395601348b018360f8b.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-160a2df4b12f6b821077469638a3d18c950235b7.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-5716723011b97e1dffd77e344434a370ecd8a05a.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-90b5885872359e0e115105d83639573193988571.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-84b974250067f246e49b456ede91410e8a0bba99.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-f626d9079c803e26d124d7743527ae9b4677a2d8.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-acbded6368fa80796e601d74353237acc3d2404a.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/classes-d766d752d1a06b5ea9291d7acb4231a015dd61a8.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-69d2b524a5639da64af13067d605101f4e2cde66.jar" />
+    </item>
+    <item
+        jar="/home/loopiezlol/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/home/loopiezlol/Work/Projects/MediTrack/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-a75651003e562417c697d4a5804747e5d98c71d0.jar" />
     </item>
 
 </items>
