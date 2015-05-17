@@ -65,8 +65,7 @@ public class MedDetailFragment extends Fragment {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; goto parent activity.
-                action.setDisplayHomeAsUpEnabled(false);
-                getActivity().getFragmentManager().popBackStack();
+                goBack();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -83,11 +82,16 @@ public class MedDetailFragment extends Fragment {
            @Override
            public boolean onKey(View v, int keyCode, KeyEvent event){
                if(event.getAction()==KeyEvent.ACTION_UP && keyCode==KeyEvent.KEYCODE_BACK){
-                   getActivity().getFragmentManager().popBackStack();
+                   goBack();
                    return true;
                }
                return false;
            }
        });
    }
+
+    private void goBack() {
+        action.setDisplayHomeAsUpEnabled(false);
+        getActivity().getFragmentManager().popBackStack();
+    }
 }
