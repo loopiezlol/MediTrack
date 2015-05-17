@@ -19,9 +19,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     private Toolbar toolbar;
     private ViewPagerAdapter adapter;
     private SlidingTabLayout tabs;
-    public DatabaseHelper dbHelper;
+
     CharSequence Titles[]={"Pharms","Map","Meds"};
     int NumberOfTabs = 3;
+    private MediLocation mediLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 //            getHelper().getPharmDao().create(pharm);
 //        }
 
+        mediLocation = MediLocation.getInstance(this);
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mediLocation.connectApi();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,19 +104,22 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
-    public DatabaseHelper getHelper() {
-        if (dbHelper == null) {
-            dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
-        }
-        return dbHelper;
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediLocation.startLocationUpdates();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mediLocation.disconnectApi();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (dbHelper != null) {
-            OpenHelperManager.releaseHelper();
-            dbHelper = null;
-        }
     }
 }

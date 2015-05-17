@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/home/motan/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.2/2bf96b7aa8b611c177d329452af1dc933e14501c/commons-cli-1.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2bf96b7aa8b611c177d329452af1dc933e14501c">
+        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/commons-cli-1.2-a170f46c1c919f45d58636b95da3d2bb7d7aa286.jar" />
+    </item>
+    <item
         jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -156,6 +163,20 @@
         <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-8817187933e49c879225c0b120160ce67f066de3.jar" />
     </item>
     <item
+        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.facebook.stetho/stetho/1.1.1/ab1142c5adfa474e7494cba19fd9fc6e73207960/stetho-1.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ab1142c5adfa474e7494cba19fd9fc6e73207960">
+        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/stetho-1.1.1-ef1a984aabea3b19b6e24528cb8773ab0a00433b.jar" />
+    </item>
+    <item
+        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.facebook.stetho/stetho-okhttp/1.1.1/1732524bc9a7c660032c73133ce27749a64ba456/stetho-okhttp-1.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1732524bc9a7c660032c73133ce27749a64ba456">
+        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/stetho-okhttp-1.1.1-1ca19776de8c229d7cd656f1510bfb02b41e5cd7.jar" />
+    </item>
+    <item
         jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -217,6 +238,13 @@
         revision="21.1.2"
         sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
         <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/classes-bf9b837bef2a4d2fa9ddd01be5f1add3a501f3a8.jar" />
+    </item>
+    <item
+        jar="/home/motan/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.1/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="/home/motan/work/android/MediTrack/app/build/intermediates/pre-dexed/debug/jsr305-2.0.1-dc2f76104cf3bb987b64b5a059dfd84dee54338e.jar" />
     </item>
     <item
         jar="/home/motan/work/android/MediTrack/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"

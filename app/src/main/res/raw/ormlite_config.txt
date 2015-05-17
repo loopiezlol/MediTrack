@@ -1,15 +1,10 @@
 #
-# generated on 2015/05/10 07:56:29
+# generated on 2015/05/17 12:43:07
 #
 # --table-start--
 dataClass=ro.laflamme.meditrack.Pharm
 tableName=pharms
 # --table-fields-start--
-# --field-start--
-fieldName=id
-columnName=_id
-id=true
-# --field-end--
 # --field-start--
 fieldName=name
 columnDefinition=name
@@ -20,6 +15,7 @@ columnDefinition=desc
 # --field-end--
 # --field-start--
 fieldName=refference
+id=true
 columnDefinition=refference
 # --field-end--
 # --table-fields-end--

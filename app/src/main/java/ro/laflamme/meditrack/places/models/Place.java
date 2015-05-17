@@ -33,7 +33,7 @@ public class Place implements Parcelable {
 			mName = jsonPlace.getString("name");
 			mLatitude = jsonPlace.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
 			mLongitude = jsonPlace.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
-			mRating = jsonPlace.getDouble("rating");
+//			mRating = jsonPlace.getDouble("rating");
 			mReference = jsonPlace.getString("reference");
 			
 			if (jsonPlace.has("vicinity")) {
