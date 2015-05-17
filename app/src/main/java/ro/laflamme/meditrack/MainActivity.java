@@ -2,9 +2,9 @@ package ro.laflamme.meditrack;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +22,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public DatabaseHelper dbHelper;
     CharSequence Titles[]={"Pharms","Map","Meds"};
     int NumberOfTabs = 3;
-    int check=3;
-    MedsFragment medsFragment;
     private MediLocation mediLocation;
 
     @Override
