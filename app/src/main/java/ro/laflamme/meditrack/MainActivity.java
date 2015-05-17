@@ -2,14 +2,15 @@ package ro.laflamme.meditrack;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -23,6 +24,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     int NumberOfTabs = 3;
     int check=3;
     MedsFragment medsFragment;
+    private MediLocation mediLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +53,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         pager.setCurrentItem(2);
 
-
+        mediLocation = MediLocation.getInstance(this);
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mediLocation.connectApi();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,7 +90,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         ft.addToBackStack(tab.getTag().toString());
 
-
     }
 
     @Override
@@ -94,11 +102,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
-    public DatabaseHelper getHelper() {
-        if (dbHelper == null) {
-            dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
-        }
-        return dbHelper;
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediLocation.startLocationUpdates();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mediLocation.disconnectApi();
     }
 
     @Override
@@ -109,7 +124,4 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             dbHelper = null;
         }
     }
-
-
-
 }

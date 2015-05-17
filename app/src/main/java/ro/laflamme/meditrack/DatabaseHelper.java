@@ -17,12 +17,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private String LOG_TAG = DatabaseHelper.class.getSimpleName();
 
     public static final String DATABASE_NAME = "meditrack.db";
-    public static final int DATABASE_VERSION = 7;
 
     private RuntimeExceptionDao<Pharm,Integer> pharmRuntimeDao =null;
 
     public DatabaseHelper(Context context ){
-        super(context, DATABASE_NAME,null,DATABASE_VERSION);
+        super(context, DATABASE_NAME,null, DatabaseConfigUtil.DATABASE_VERSION);
     }
 
     @Override

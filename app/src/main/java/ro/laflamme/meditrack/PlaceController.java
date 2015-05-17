@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ro.laflamme.meditrack.exception.NoPlacesFoundException;
 import ro.laflamme.meditrack.places.GooglePlaces;
 import ro.laflamme.meditrack.places.models.Place;
 import ro.laflamme.meditrack.places.models.PlacesResult;
@@ -18,7 +19,8 @@ import ro.laflamme.meditrack.places.models.Result;
  */
 public class PlaceController {
 
-    public static List<Pharm> getPharms(int radius, double lat, double lng) throws Exception{
+    public static List<Pharm> getPharms(int radius, double lat, double lng)
+            throws NoPlacesFoundException, JSONException, IOException {
 
         GooglePlaces googlePlaces = new GooglePlaces("AIzaSyDmtFoPKs9x1rrRTKbHAOJVWDxOfQKo_YQ");
 
@@ -29,7 +31,7 @@ public class PlaceController {
 
         if (result.getStatusCode() == Result.StatusCode.OK) {
             places = result.getPlaces();
-        } else throw new Exception("Something went wrong when querying places");
+        } else throw new NoPlacesFoundException();
 
         List<Pharm> pharms = new ArrayList<>();
         for (Place p : places) pharms.add(Adapter.toPharm(p));

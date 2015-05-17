@@ -9,41 +9,26 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName="pharms")
 public class Pharm extends Item {
 
-    public static final String KEY_ID ="_id";
     public static final String KEY_NAME ="name";
     public static final String KEY_DESC="desc";
     private static final String KEY_REFFERENCE = "refference";
 
-    @DatabaseField(id = true, columnName = KEY_ID)
-    private int id;
     @DatabaseField(columnDefinition = KEY_NAME)
     private String name;
     @DatabaseField(columnDefinition = KEY_DESC)
     private String desc;
-    @DatabaseField(columnDefinition = KEY_REFFERENCE)
+    @DatabaseField(columnDefinition = KEY_REFFERENCE, id = true)
     private String refference;
 
     public Pharm() {
     }
 
-    public Pharm(int id, String name, String desc) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-    }
 
     public Pharm(String name, String desc) {
         this.name = name;
         this.desc = desc;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

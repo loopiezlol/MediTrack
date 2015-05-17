@@ -32,4 +32,6 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.0'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.melnykov:floatingactionbutton:1.2.0'
+    compile 'com.facebook.stetho:stetho:1.1.1'
+    compile 'com.facebook.stetho:stetho-okhttp:1.1.1'
 }
