@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -32,6 +33,7 @@ public class MedsFragment extends Fragment {
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edit_search;
+    long mLastClickTime = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -101,7 +103,10 @@ public class MedsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                disableDoubleTap();
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
 
                 //close keyboard and searchbar
                 if (isSearchOpened) {
@@ -213,16 +218,7 @@ public class MedsFragment extends Fragment {
         adapter.getFilter().filter(text);
     }
 
-    private void disableDoubleTap() {
-        listView.setEnabled(false);
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                listView.setEnabled(true);
-            }
-        }, 150);
-    }
+
 
     private void openDetailFragment(int position) {
         Med med = listMeds.get(position);

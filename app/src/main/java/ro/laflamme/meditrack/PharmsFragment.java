@@ -7,6 +7,7 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     private PharmsAdapter mAdapter;
     private FloatingActionButton mFab;
     private ListView mListView;
+    private long mLastClickTime =0;
 
 
     @Override
@@ -81,8 +83,10 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                disableDoubleTap();
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 openDetailFragment(position);
             }
         });
@@ -115,16 +119,6 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
 
-    private void disableDoubleTap() {
-        mListView.setEnabled(false);
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mListView.setEnabled(true);
-            }
-        }, 150);
-    }
 
     private void openDetailFragment(int position) {
         Pharm pharm = mAdapter.getItem(position);
@@ -136,7 +130,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
         PharmDetailFragment detailFragment = new PharmDetailFragment();
         detailFragment.setArguments(data);
         fragmentTransaction.setCustomAnimations(R.animator.slide_in_right, R.animator.slide_out_left, R.animator.slide_in_left, R.animator.slide_out_right);
-        fragmentTransaction.add(R.id.pharm_list_container, detailFragment);
+        fragmentTransaction.replace(R.id.pharm_list_container, detailFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
