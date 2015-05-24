@@ -101,7 +101,7 @@ public class MedsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                disableDoubleTab();
+                disableDoubleTap();
 
                 //close keyboard and searchbar
                 if (isSearchOpened) {
@@ -160,9 +160,12 @@ public class MedsFragment extends Fragment {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(edit_search.getWindowToken(), 0);
 
+
             mSearchAction.setIcon(getResources().getDrawable(R.drawable.ic_search_white_24dp));
 
             isSearchOpened = false;
+
+            imm.hideSoftInputFromWindow(listView.getWindowToken(), 0);
 
         } else {
 
@@ -210,7 +213,7 @@ public class MedsFragment extends Fragment {
         adapter.getFilter().filter(text);
     }
 
-    private void disableDoubleTab() {
+    private void disableDoubleTap() {
         listView.setEnabled(false);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -218,7 +221,7 @@ public class MedsFragment extends Fragment {
             public void run() {
                 listView.setEnabled(true);
             }
-        }, 100);
+        }, 150);
     }
 
     private void openDetailFragment(int position) {

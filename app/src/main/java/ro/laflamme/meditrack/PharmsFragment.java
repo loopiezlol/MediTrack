@@ -1,13 +1,17 @@
 package ro.laflamme.meditrack;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -74,6 +78,15 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
             }
         });
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                disableDoubleTap();
+                openDetailFragment(position);
+            }
+        });
+
     }
 
     @Override
@@ -100,5 +113,33 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     public void onLoaderReset(Loader<List<Pharm>> loader) {
         Log.d(TAG, "onLoaderReset");
     }
+
+
+    private void disableDoubleTap() {
+        mListView.setEnabled(false);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mListView.setEnabled(true);
+            }
+        }, 150);
+    }
+
+    private void openDetailFragment(int position) {
+        Pharm pharm = mAdapter.getItem(position);
+        Bundle data = new Bundle();
+        data.putString("title", pharm.getName());
+        data.putString("desc", pharm.getDesc());
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        PharmDetailFragment detailFragment = new PharmDetailFragment();
+        detailFragment.setArguments(data);
+        fragmentTransaction.setCustomAnimations(R.animator.slide_in_right, R.animator.slide_out_left, R.animator.slide_in_left, R.animator.slide_out_right);
+        fragmentTransaction.add(R.id.pharm_list_container, detailFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 
 }

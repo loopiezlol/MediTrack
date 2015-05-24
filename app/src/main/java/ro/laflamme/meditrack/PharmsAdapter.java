@@ -61,7 +61,7 @@ public class PharmsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Pharm getItem(int position) {
         return mPharms.get(position);
     }
 

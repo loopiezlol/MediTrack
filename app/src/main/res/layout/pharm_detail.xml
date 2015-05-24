@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:id="@+id/pharm_detail_container">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pharm_title"
+            android:text="Titlu farmacie"
+            android:textSize="30dp"
+            android:padding="30dp"
+            android:fontFamily="sans-serif-bold"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Descriere farmacie"
+            android:paddingLeft="20dp"
+            android:textSize="15dp"
+            android:id="@+id/pharm_desc"
+            android:scrollbars="vertical"
+            />
+
+    </LinearLayout>
+</ScrollView>
