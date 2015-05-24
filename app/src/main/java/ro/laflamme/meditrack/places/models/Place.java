@@ -9,6 +9,7 @@ import android.os.Parcelable;
 
 public class Place implements Parcelable {
 
+	private String mId = "";
 	private String mName = "";
 	private String mAddress = "";
 	private double mLatitude = 0;
@@ -19,6 +20,7 @@ public class Place implements Parcelable {
 	private PlaceDetails mDetails;
 	
 	private Place(Parcel in) {
+		mId = in.readString();
 		mName = in.readString();
 		mAddress = in.readString();
 		mLatitude = in.readDouble();
@@ -30,6 +32,7 @@ public class Place implements Parcelable {
 	
 	public Place(JSONObject jsonPlace) {
 		try {
+			mId = jsonPlace.getString("place_id");
 			mName = jsonPlace.getString("name");
 			mLatitude = jsonPlace.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
 			mLongitude = jsonPlace.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
@@ -46,8 +49,16 @@ public class Place implements Parcelable {
 			e.printStackTrace();
 		}
 	}
-	
-	public String getName() {
+
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String mId) {
+        this.mId = mId;
+    }
+
+    public String getName() {
 		return mName;
 	}
 	
@@ -115,6 +126,7 @@ public class Place implements Parcelable {
 	}
 	
 	public void writeToParcel(Parcel out, int flags) {
+        out.writeString(mId);
 		out.writeString(mName);
 		out.writeString(mAddress);
 		out.writeDouble(mLatitude);

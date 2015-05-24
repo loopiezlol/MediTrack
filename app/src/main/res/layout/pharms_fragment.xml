@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/pharms_recycler_view"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/pharms_list"
         android:scrollbars="vertical"
-
+        android:layout_alignParentTop="true"
         />
+
 
 
     <com.melnykov.fab.FloatingActionButton

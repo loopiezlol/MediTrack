@@ -3,11 +3,13 @@ package ro.laflamme.meditrack;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by loopiezlol on 12.05.2015.
  */
 @DatabaseTable(tableName="meds")
-public class Med {
+public class Med implements Serializable {
 
     public static final String KEY_ID="_id";
     public static final String KEY_NAME="name";

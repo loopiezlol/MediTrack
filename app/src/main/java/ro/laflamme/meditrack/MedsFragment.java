@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
 public class MedsFragment extends Fragment {
 
     ArrayList<Med> listMeds;
@@ -63,8 +64,8 @@ public class MedsFragment extends Fragment {
                 " \n" +
                 "\n" +
                 "This page shows on the left as it appears in your browser, and the corresponding HTML code appears on the right. The HTML commands are linked to explanations of what they do.\n" +
-                " "+
-        "<H3>Line Breaks</H3>\n" +
+                " " +
+                "<H3>Line Breaks</H3>\n" +
                 "\n" +
                 "HTML doesn't normally use line breaks for ordinary text. A white space of any size is treated as a single space. This is because the author of the page has no way of knowing the size of the reader's screen, or what size type they will have their browser set for.<P>\n" +
                 "\n" +

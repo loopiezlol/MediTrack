@@ -2,94 +2,107 @@ package ro.laflamme.meditrack;
 
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 /**
  * Created by loopiezlol on 19.04.2015.
  */
-public class PharmsAdapter extends RecyclerView.Adapter<PharmsAdapter.ViewHolder> {
+public class PharmsAdapter extends BaseAdapter {
 
-    OnItemClickListener mItemClickListener;
-    private Context context;
-    private List<Pharm> items;
+    private Context mContext;
+    private List<Pharm> mPharms;
+    private LayoutInflater inflater;
 
-    public PharmsAdapter(Context context) {
-        this.context = context;
+    public PharmsAdapter(Context mContext) {
+        this.mContext = mContext;
+        this.inflater = LayoutInflater.from(mContext);
+        this.mPharms = new ArrayList<>();
     }
 
-    public PharmsAdapter(Context context, List<Pharm> items) {
-        this.context = context;
-        this.items = items;
+    public PharmsAdapter(Context mContext, List<Pharm> mPharms) {
+        this.mContext = mContext;
+        this.inflater = LayoutInflater.from(mContext);
+        this.mPharms = mPharms;
     }
 
     @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.item_list_pharm, parent, false);
+
+            holder.name = (TextView) convertView.findViewById(R.id.pharm_name);
+            holder.desc = (TextView) convertView.findViewById(R.id.pharm_desc);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        Pharm pharm = mPharms.get(position);
+        holder.name.setText(pharm.getName());
+        holder.desc.setText(pharm.getDesc());
+
+        return convertView;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mPharms.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return mPharms.size();
+    }
+
+    private class ViewHolder {
+        TextView name;
+        TextView desc;
+    }
+
+
+    /*
+
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int itemLayout = R.layout.pharm_list_item;
+        int itemLayout = R.layout.item_list_pharm;
         View v = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
-        ItemInterface item = items.get(position);
-
+        ItemInterface item = mPharms.get(position);
         holder.pharmName.setText(item.getTitle());
         holder.pharmDesc.setText(item.getSubtitle());
-
     }
+*/
 
     public void setData(List<Pharm> items) {
-        this.items = items;
+        this.mPharms = items;
     }
 
     public void clear() {
-        this.items = null;
+        this.mPharms = null;
     }
 
-    @Override
-    public int getItemCount() {
-        if (items != null)
-            return items.size();
-        return 0;
-    }
-
-    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        this.mItemClickListener = mItemClickListener;
-    }
-
-    public interface OnItemClickListener {
-
-        public void onItemClick(View view, int position);
-
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        public TextView pharmName;
-        public TextView pharmDesc;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            pharmName = (TextView) itemView.findViewById(R.id.pharm_name);
-            pharmDesc = (TextView) itemView.findViewById(R.id.pharm_desc);
-        }
 
 
-        @Override
-        public void onClick(View v) {
-            if (mItemClickListener != null) {
-                mItemClickListener.onItemClick(v, getPosition());
-            }
-        }
-    }
 
 
 }

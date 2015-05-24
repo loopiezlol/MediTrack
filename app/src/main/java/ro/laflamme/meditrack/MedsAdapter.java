@@ -54,8 +54,8 @@ public class MedsAdapter extends BaseAdapter implements Filterable  {
             convertView = this.inflater.inflate(R.layout.item_list_med, parent,false);
 
             holder.title=(TextView) convertView.findViewById(R.id.med_item);
-
             convertView.setTag(holder);
+
         } else {
             holder = (ViewHolder) convertView.getTag();
         }

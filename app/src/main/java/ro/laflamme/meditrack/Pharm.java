@@ -3,14 +3,16 @@ package ro.laflamme.meditrack;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by loopiezlol on 19.04.2015.
  */
 @DatabaseTable(tableName="pharms")
-public class Pharm extends Item {
+public class Pharm implements Serializable {
 
     public static final String KEY_NAME ="name";
-    public static final String KEY_DESC="desc";
+    public static final String KEY_DESC = "desc";
     private static final String KEY_REFFERENCE = "refference";
 
     @DatabaseField(columnDefinition = KEY_NAME)
@@ -46,15 +48,6 @@ public class Pharm extends Item {
         this.desc = desc;
     }
 
-    @Override
-    public String getTitle() {
-        return this.name;
-    }
-
-    @Override
-    public String getSubtitle() {
-        return this.desc;
-    }
 
     public String getRefference() {
         return refference;

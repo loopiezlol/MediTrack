@@ -22,6 +22,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     private static final int RADIUS = 500;
     private static final double LAT = 40.764941;
     private static final double LNG = -73.984886;
+    private static final String API_KEY = "AIzaSyDmtFoPKs9x1rrRTKbHAOJVWDxOfQKo_YQ";
 
     public ApplicationTest() {
         super(Application.class);
@@ -29,7 +30,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void testPlaces() {
 
-        GooglePlaces googlePlaces = new GooglePlaces("AIzaSyDmtFoPKs9x1rrRTKbHAOJVWDxOfQKo_YQ");
+        GooglePlaces googlePlaces = new GooglePlaces(API_KEY);
 
         PlacesResult result = null;
         try {
@@ -46,7 +47,30 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         List<Place> places = result.getPlaces();
 
         for (Place p : places) {
-            Log.d("Places", p.getName());
+            assertNotNull(p.getId());
+            Log.d("PlacesTest", p.getId() + " - " + p.getName());
+        }
+
+    }
+/*
+    public void testReferenceDuplication() {
+        GooglePlaces googlePlaces = new GooglePlaces(API_KEY);
+
+        PlacesResult result = null;
+        try {
+            result = googlePlaces.getPlaces("pharmacy", RADIUS, LAT, LNG);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assertNotNull("No internet.", result);
+        assertEquals(result.getStatusCode(), Result.StatusCode.OK);
+
+        List<Place> places = result.getPlaces();
+        for (Place p : places) {
+            Log.d("PlacesTest", p.getId() + " - " + p.getName());
         }
 
     }
@@ -59,5 +83,5 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         for (Pharm p : pharms) {
             Log.d("Pharms", p.getName());
         }
-    }
+    }*/
 }
