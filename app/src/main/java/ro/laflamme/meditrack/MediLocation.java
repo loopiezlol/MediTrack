@@ -88,7 +88,7 @@ public class MediLocation implements GoogleApiClient.ConnectionCallbacks, Google
     protected void createLocationRequest() {
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(20000);
-        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setFastestInterval(50000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 

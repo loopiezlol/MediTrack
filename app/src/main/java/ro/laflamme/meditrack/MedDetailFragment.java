@@ -43,21 +43,17 @@ public class MedDetailFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         data =getArguments();
-        title.setText(data.getString("title"));
-        desc.setText(Html.fromHtml(data.getString("desc")), TextView.BufferType.SPANNABLE);
-
-
-
-
-
+        Med med = (Med) data.getSerializable("med");
+        title.setText(med.getName());
+        desc.setText(Html.fromHtml(med.getDesc()), TextView.BufferType.SPANNABLE);
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
         inflater.inflate(R.menu.menu_detail_med, menu);
 
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -75,13 +71,13 @@ public class MedDetailFragment extends Fragment {
    @Override
     public void onResume() {
        super.onResume();
-
+       action.setDisplayHomeAsUpEnabled(true);
        getView().setFocusableInTouchMode(true);
        getView().requestFocus();
-       getView().setOnKeyListener(new View.OnKeyListener(){
+       getView().setOnKeyListener(new View.OnKeyListener() {
            @Override
-           public boolean onKey(View v, int keyCode, KeyEvent event){
-               if(event.getAction()==KeyEvent.ACTION_UP && keyCode==KeyEvent.KEYCODE_BACK){
+           public boolean onKey(View v, int keyCode, KeyEvent event) {
+               if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                    goBack();
                    return true;
                }
@@ -89,6 +85,15 @@ public class MedDetailFragment extends Fragment {
            }
        });
    }
+
+   /* @Override
+    public void onPause(){
+        super.onPause();
+        action.setDisplayShowCustomEnabled(false);
+        action.setDisplayShowTitleEnabled(true);
+
+    }*/
+
 
     private void goBack() {
         action.setDisplayHomeAsUpEnabled(false);

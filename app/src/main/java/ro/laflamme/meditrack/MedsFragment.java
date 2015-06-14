@@ -34,13 +34,14 @@ public class MedsFragment extends Fragment {
     private boolean isSearchOpened = false;
     private EditText edit_search;
     long mLastClickTime = 0;
+    ActionBar action;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.meds_fragment, container, false);
 
-        setHasOptionsMenu(true);
+
 
         listMeds = new ArrayList<Med>();
 
@@ -95,6 +96,8 @@ public class MedsFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -119,6 +122,11 @@ public class MedsFragment extends Fragment {
                 openDetailFragment(position);
             }
         });
+
+        action = ((ActionBarActivity) getActivity()).getSupportActionBar();
+        action.setDisplayHomeAsUpEnabled(false);
+        setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -140,19 +148,17 @@ public class MedsFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    /*@Override
     public void onPause() {
         super.onPause();
-        ActionBar action = ((ActionBarActivity) getActivity()).getSupportActionBar();
         action.setDisplayShowCustomEnabled(false);
         action.setDisplayShowTitleEnabled(true);
-    }
+    }*/
+
 
     protected void handleMenuSearch() {
 
         //get the actionBar
-        ActionBar action = ((ActionBarActivity) getActivity()).getSupportActionBar();
-
 
         //test if the search is open
         if (isSearchOpened) {
@@ -223,8 +229,7 @@ public class MedsFragment extends Fragment {
     private void openDetailFragment(int position) {
         Med med = listMeds.get(position);
         Bundle data = new Bundle();
-        data.putString("title", med.getName());
-        data.putString("desc", med.getDesc());
+        data.putSerializable("med", med);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         MedDetailFragment detailFragment = new MedDetailFragment();

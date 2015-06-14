@@ -45,11 +45,6 @@ public class PharmDetailFragment extends Fragment {
         data =getArguments();
         title.setText(data.getString("title"));
         desc.setText(data.getString("desc"));
-
-
-
-
-
     }
 
     @Override

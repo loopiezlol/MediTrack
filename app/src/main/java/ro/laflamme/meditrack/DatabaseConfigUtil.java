@@ -16,5 +16,5 @@ public class DatabaseConfigUtil extends OrmLiteConfigUtil {
         writeConfigFile(new File("app/src/main/res/raw/ormlite_config.txt"), classes);
     }
 
-    public static final int DATABASE_VERSION = 9;
+    public static final int DATABASE_VERSION = 10;
 }

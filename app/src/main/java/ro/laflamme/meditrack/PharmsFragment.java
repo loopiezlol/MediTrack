@@ -1,19 +1,23 @@
 package ro.laflamme.meditrack;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -33,6 +37,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     private FloatingActionButton mFab;
     private ListView mListView;
     private long mLastClickTime =0;
+    android.support.v7.app.ActionBar action;
 
 
     @Override
@@ -91,6 +96,10 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
             }
         });
 
+        action = ((ActionBarActivity) getActivity()).getSupportActionBar();
+        action.setDisplayHomeAsUpEnabled(false);
+        setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -109,8 +118,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     public void onLoadFinished(Loader<List<Pharm>> loader, List<Pharm> data) {
         Log.d(TAG, "onLoadFinished");
         mAdapter.setData(data);
-        mAdapter.notifyDataSetChanged();
-    }
+        mAdapter.notifyDataSetChanged();}
 
 
     @Override
@@ -130,10 +138,16 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
         PharmDetailFragment detailFragment = new PharmDetailFragment();
         detailFragment.setArguments(data);
         fragmentTransaction.setCustomAnimations(R.animator.slide_in_right, R.animator.slide_out_left, R.animator.slide_in_left, R.animator.slide_out_right);
-        fragmentTransaction.replace(R.id.pharm_list_container, detailFragment);
+        fragmentTransaction.add(R.id.pharm_list_container, detailFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.menu_pharm, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }
