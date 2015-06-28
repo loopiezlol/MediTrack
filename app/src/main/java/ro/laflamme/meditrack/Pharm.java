@@ -14,6 +14,8 @@ public class Pharm implements Serializable {
     public static final String KEY_NAME ="name";
     public static final String KEY_DESC = "desc";
     private static final String KEY_REFFERENCE = "refference";
+    public static final String KEY_LAT="latitude";
+    public static final String KEY_LONG="longitude";
 
     @DatabaseField(columnDefinition = KEY_NAME)
     private String name;
@@ -21,6 +23,27 @@ public class Pharm implements Serializable {
     private String desc;
     @DatabaseField(columnDefinition = KEY_REFFERENCE, id = true)
     private String refference;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    @DatabaseField(columnDefinition = KEY_LAT)
+    private double latitude;
+    @DatabaseField(columnDefinition = KEY_LONG)
+    private double longitude;
 
     public Pharm() {
     }
@@ -31,6 +54,12 @@ public class Pharm implements Serializable {
         this.desc = desc;
     }
 
+    public Pharm(double longitude, double latitude, String desc, String name) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.desc = desc;
+        this.name = name;
+    }
 
     public String getName() {
         return name;

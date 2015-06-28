@@ -12,6 +12,8 @@ public class Adapter {
         pharm.setName(place.getName());
         pharm.setDesc(place.getAddress());
         pharm.setRefference(place.getReference());
+        pharm.setLatitude(place.getLatitude());
+        pharm.setLongitude(place.getLongitude());
         return pharm;
     }
 }
