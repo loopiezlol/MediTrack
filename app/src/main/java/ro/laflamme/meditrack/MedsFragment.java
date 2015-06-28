@@ -44,7 +44,7 @@ public class MedsFragment extends Fragment {
 
         listMeds = new ArrayList<Med>();
 
-        Med med1 = new Med(1, "da", "<CENTER>\n" +
+        Med med1 = new Med(1, "Paracetamol", "<CENTER>\n" +
                 "<H1>A Simple Sample Web Page</H1>\n" +
                 "\n" +
                 " \n" +
@@ -75,8 +75,17 @@ public class MedsFragment extends Fragment {
                 "\n" +
                 "If you want to put a line break at a particular place, you can use the \"<BR>\" command, or, for a paragraph break, the \"<P>\" command, which will insert a blank line. The heading command (\"<4></4>\") puts a blank line above and below the heading text.\n" +
                 "\n");
-        Med med2 = new Med(1, "da", "ba");
-        Med med3 = new Med(1, "bsaaaa", "ba");
+        Med med2 = new Med(1, "Algocalmin", "Prospect\n" +
+                "\n" +
+                "Compozitie\n" +
+                "Comprimate a 0,50 g natrium phenyl dimethylpyrazolonum methyl aminome-thansulfonicum. \n" +
+                "Solutie injectabila 50%, natrium phenyl dimethylpyrazolonum methyl aminome-thansulfonicum. \n" +
+                "Supozitoare pentru adulti: 1g natrium phenyl dimethylpyrazolonum methyl aminome-thansulfonicum, 1,53 g excipient. \n" +
+                "Supozitoare pentru copii: 0,30 g natrium phenyl dimethylpyrazolonum methyl aminome-thansulfonicum, 0,82 g excipient. \n" +
+                "\n" +
+                "Actiune terapeutica\n" +
+                "algocalminul este un analgezic puternic, inlocuind intr-o larga masura opiaceele,fara a determina efectele secundare obisnuite dupa administrarea acestora. Fiind un derivat pirazolonic, algocalminul are si o actiune antipiretica.");
+        Med med3 = new Med(1, "Ketonal", "ba");
 
         listMeds.add(med1);
         listMeds.add(med2);
