@@ -7,6 +7,9 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import java.util.List;
 
+import ro.laflamme.meditrack.db.DatabaseHelper;
+import ro.laflamme.meditrack.domain.Pharm;
+
 /**
  * Created by loopiezlol on 19.04.2015.
  */

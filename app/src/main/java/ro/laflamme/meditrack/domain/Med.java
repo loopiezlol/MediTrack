@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.domain;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.fragment;
 
 
 import android.content.Context;
@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
+
+import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 19.04.2015.

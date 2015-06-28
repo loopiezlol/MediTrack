@@ -1,9 +1,13 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.view;
 
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentStatePagerAdapter;
+
+import ro.laflamme.meditrack.fragment.MapCustomFragment;
+import ro.laflamme.meditrack.fragment.MedsFragment;
+import ro.laflamme.meditrack.fragment.PharmsFragment;
 
 /**
  * Created by loopiezlol on 18.04.2015.

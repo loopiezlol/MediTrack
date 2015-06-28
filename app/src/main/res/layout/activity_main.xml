@@ -8,7 +8,7 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
 
-    <ro.laflamme.meditrack.SlidingTabLayout
+    <ro.laflamme.meditrack.view.SlidingTabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tabs"

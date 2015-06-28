@@ -1,8 +1,10 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.db;
 
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
 
 import java.io.File;
+
+import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 19.04.2015.

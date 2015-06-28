@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ro.laflamme.meditrack.domain.Med;
+
 /**
  * Created by loopiezlol on 13.05.2015.
  */

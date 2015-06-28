@@ -1,5 +1,6 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.util;
 
+import ro.laflamme.meditrack.domain.Pharm;
 import ro.laflamme.meditrack.places.models.Place;
 
 /**

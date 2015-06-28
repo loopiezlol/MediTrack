@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +8,8 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+
+import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 19.04.2015.

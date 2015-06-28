@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.fragment;
 
 
 import android.os.AsyncTask;
@@ -17,8 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -30,6 +28,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import ro.laflamme.meditrack.db.DatabaseHelper;
+import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 18.04.2015.
@@ -62,9 +64,9 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
             e.printStackTrace();
         }
 
-        googleMap.setMyLocationEnabled(true);
+//        googleMap.setMyLocationEnabled(true);
 
-        googleMap.setOnInfoWindowClickListener(this);
+//        googleMap.setOnInfoWindowClickListener(this);
 
     }
 
@@ -99,7 +101,7 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
     @Override
     public void onResume() {
         super.onResume();
-        initilizeMap();
+//        initilizeMap();
     }
 
     public class populateMap extends AsyncTask<Void,Void,Void>

@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.domain.Med;
 
 /**
  * Created by loopiezlol on 16.05.2015.

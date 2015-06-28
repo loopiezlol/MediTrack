@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+import ro.laflamme.meditrack.db.DatabaseHelper;
+import ro.laflamme.meditrack.view.SlidingTabLayout;
+import ro.laflamme.meditrack.view.ViewPagerAdapter;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -40,9 +41,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         tabs =(SlidingTabLayout) findViewById(R.id.tabs);
         tabs.setDistributeEvenly(true);
 
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer(){
+        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
-            public int getIndicatorColor(int position){
+            public int getIndicatorColor(int position) {
                 return getResources().getColor(R.color.primary_dark);
             }
         });
@@ -52,7 +53,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         pager.setCurrentItem(2);
 
         mediLocation = MediLocation.getInstance(this);
-
     }
 
 
@@ -103,7 +103,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     protected void onPause() {
         super.onPause();
-        mediLocation.stopLocationUpdates();
+//        mediLocation.stopLocationUpdates();
     }
 
     @Override

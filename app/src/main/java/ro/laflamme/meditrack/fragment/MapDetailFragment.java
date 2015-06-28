@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 24.05.2015.

@@ -1,11 +1,10 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.fragment;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -24,6 +23,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import ro.laflamme.meditrack.MedsAdapter;
+import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.domain.Med;
 
 public class MedsFragment extends Fragment {
 

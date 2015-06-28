@@ -1,4 +1,4 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.view;
 
         import android.R;
         import android.content.Context;

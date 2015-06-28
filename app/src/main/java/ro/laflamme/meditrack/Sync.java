@@ -1,11 +1,9 @@
 package ro.laflamme.meditrack;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
 
 import org.json.JSONException;
 
@@ -14,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ro.laflamme.meditrack.db.DatabaseHelper;
+import ro.laflamme.meditrack.domain.Pharm;
 import ro.laflamme.meditrack.exception.NoPlacesFoundException;
 
 /**
@@ -98,7 +98,7 @@ public class Sync {
         releaseHelper();
     }
 
-    @Debug
+
     public void listPharmacies(List<Pharm> ps) {
         for (Pharm p : ps) {
             Log.d(TAG, "Pharmacy [" + p.getName() + "}");

@@ -1,6 +1,5 @@
-package ro.laflamme.meditrack;
+package ro.laflamme.meditrack.fragment;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,13 +16,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import ro.laflamme.meditrack.MediLocation;
+import ro.laflamme.meditrack.PharmDetailFragment;
+import ro.laflamme.meditrack.PharmsLoader;
+import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.Sync;
+import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 18.04.2015.
