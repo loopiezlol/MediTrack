@@ -96,11 +96,11 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
         }
     }
 
-    /*@Override
+    @Override
     public void onResume() {
         super.onResume();
         initilizeMap();
-    }*/
+    }
 
     public class populateMap extends AsyncTask<Void,Void,Void>
     {
