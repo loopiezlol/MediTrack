@@ -31,19 +31,20 @@ import java.util.Map;
 
 import ro.laflamme.meditrack.db.DatabaseHelper;
 import ro.laflamme.meditrack.R;
+import ro.laflamme.meditrack.db.OrmFragment;
 import ro.laflamme.meditrack.domain.Pharm;
 
 /**
  * Created by loopiezlol on 18.04.2015.
  */
-public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindowClickListener {
+public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWindowClickListener {
 
     private static final String TAG = MapCustomFragment.class.getSimpleName();
     private GoogleMap googleMap;
     private Map<Marker,Pharm> markersMap = new HashMap<Marker,Pharm>();
     private ActionBar action;
     private List<Pharm> pharmList = new ArrayList<>();
-    private DatabaseHelper dbHelper;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,17 +58,13 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
 
+        initilizeMap();
 
-        try{
-            initilizeMap();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+        googleMap.setMyLocationEnabled(true);
 
-//        googleMap.setMyLocationEnabled(true);
+        googleMap.setOnInfoWindowClickListener(this);
 
-//        googleMap.setOnInfoWindowClickListener(this);
-
+        new PopulateMap().execute(); // load markers
     }
 
 
@@ -96,21 +93,29 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
                         .show();
             }
         }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-//        initilizeMap();
+        initilizeMap();
     }
 
-    public class populateMap extends AsyncTask<Void,Void,Void>
+    public class PopulateMap extends AsyncTask<Void,Void,Void>
     {
 
         @Override
         protected Void doInBackground(Void... params) {
-            pharmList = dbHelper.getPharmDao().queryForAll();
-            Toast.makeText(getActivity(),pharmList.get(0).getDesc(),Toast.LENGTH_SHORT).show();
+            pharmList = getHelper().getPharmDao().queryForAll();
+//            Toast.makeText(getActivity(),pharmList.get(0).getDesc(),Toast.LENGTH_SHORT).show();
+//            releaseHelper();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
             for(Pharm pharm : pharmList)
             {
                 Marker marker = googleMap.addMarker(new MarkerOptions()
@@ -119,8 +124,6 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                 markersMap.put(marker,pharm);
             }
-
-            return null;
         }
     }
     @Override
@@ -138,13 +141,14 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
         Log.d(TAG, "sdk: " + Build.VERSION.SDK_INT);
         Log.d(TAG, "release: " + Build.VERSION.RELEASE);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+ /*       if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             Log.d(TAG, "using getFragmentManager");
             fm = getFragmentManager();
         } else {
             Log.d(TAG, "using getChildFragmentManager");
             fm = getChildFragmentManager();
-        }
+        }*/
+        fm = getFragmentManager();
 
         return (MapFragment) fm.findFragmentById(R.id.map);
     }
@@ -157,8 +161,6 @@ public class MapCustomFragment extends Fragment implements GoogleMap.OnInfoWindo
         MapDetailFragment dialog = new MapDetailFragment();
         dialog.setArguments(bundle);
         dialog.show(getActivity());
-
-
 
     }
 

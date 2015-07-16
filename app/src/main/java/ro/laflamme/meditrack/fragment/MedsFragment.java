@@ -45,7 +45,6 @@ public class MedsFragment extends Fragment {
         View v = inflater.inflate(R.layout.meds_fragment, container, false);
 
 
-
         listMeds = new ArrayList<Med>();
 
         Med med1 = new Med(1, "Paracetamol", "<CENTER>\n" +
