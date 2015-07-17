@@ -1,6 +1,7 @@
 package ro.laflamme.meditrack.fragment;
 
 
+import android.location.Location;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -42,7 +44,7 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
     private static final String TAG = MapCustomFragment.class.getSimpleName();
     private GoogleMap googleMap;
     private Map<Marker,Pharm> markersMap = new HashMap<Marker,Pharm>();
-    private ActionBar action;
+    private static ActionBar action;
     private List<Pharm> pharmList = new ArrayList<>();
 
 
@@ -94,6 +96,8 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
             }
         }
 
+        googleMap.setMyLocationEnabled(true);
+
     }
 
     @Override
@@ -101,6 +105,8 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         super.onResume();
         initilizeMap();
     }
+
+
 
     public class PopulateMap extends AsyncTask<Void,Void,Void>
     {

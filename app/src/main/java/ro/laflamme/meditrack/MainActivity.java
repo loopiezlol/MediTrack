@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 import ro.laflamme.meditrack.db.DatabaseHelper;
+import ro.laflamme.meditrack.fragment.MapCustomFragment;
+import ro.laflamme.meditrack.fragment.MedsFragment;
+import ro.laflamme.meditrack.fragment.PharmsFragment;
 import ro.laflamme.meditrack.view.SlidingTabLayout;
 import ro.laflamme.meditrack.view.ViewPagerAdapter;
 
 
-public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
+public class MainActivity extends ActionBarActivity  {
 
     private ViewPager pager;
     private Toolbar toolbar;
@@ -50,9 +54,28 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         tabs.setViewPager(pager);
 
+        tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                getFragmentManager().popBackStack();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
         pager.setCurrentItem(2);
 
         mediLocation = MediLocation.getInstance(this);
+
+
     }
 
 
@@ -62,41 +85,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         mediLocation.connectApi();
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-       ft.disallowAddToBackStack();
-    }
 
 
 
