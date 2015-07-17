@@ -11,43 +11,29 @@ import java.io.Serializable;
 @DatabaseTable(tableName="pharms")
 public class Pharm implements Serializable {
 
-    public static final String KEY_NAME ="name";
-    public static final String KEY_DESC = "desc";
-    private static final String KEY_REFFERENCE = "refference";
-    public static final String KEY_LAT="latitude";
-    public static final String KEY_LONG="longitude";
+    @DatabaseField(columnDefinition = "place_id", id = true)
+    private String placeId;
 
-    @DatabaseField(columnDefinition = KEY_NAME)
+    @DatabaseField(columnDefinition = "name")
     private String name;
-    @DatabaseField(columnDefinition = KEY_DESC)
+
+    @DatabaseField(columnDefinition = "desc")
     private String desc;
-    @DatabaseField(columnDefinition = KEY_REFFERENCE, id = true)
+
+    @DatabaseField(columnDefinition = "refference")
     private String refference;
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    @DatabaseField(columnDefinition = KEY_LAT)
+    @DatabaseField(columnDefinition = "latitude")
     private double latitude;
-    @DatabaseField(columnDefinition = KEY_LONG)
+
+    @DatabaseField(columnDefinition = "longitude")
     private double longitude;
+
+    @DatabaseField(columnDefinition = "open_now")
+     private boolean openNow;
 
     public Pharm() {
     }
-
 
     public Pharm(String name, String desc) {
         this.name = name;
@@ -59,6 +45,38 @@ public class Pharm implements Serializable {
         this.latitude = latitude;
         this.desc = desc;
         this.name = name;
+    }
+
+    public String getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public boolean isOpenNow() {
+        return openNow;
+    }
+
+    public void setOpenNow(boolean openNow) {
+        this.openNow = openNow;
     }
 
     public String getName() {

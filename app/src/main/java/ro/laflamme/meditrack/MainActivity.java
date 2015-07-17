@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
@@ -14,31 +15,36 @@ import ro.laflamme.meditrack.view.SlidingTabLayout;
 import ro.laflamme.meditrack.view.ViewPagerAdapter;
 
 
-public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
+public class MainActivity extends ActionBarActivity {
 
+    private static final String TAG = "MainActivity";
     private ViewPager pager;
     private Toolbar toolbar;
     private ViewPagerAdapter adapter;
     private SlidingTabLayout tabs;
     public DatabaseHelper dbHelper;
-    CharSequence Titles[]={"Pharms","Map","Meds"};
-    int NumberOfTabs = 3;
     private MediLocation mediLocation;
+
+    public static final int NUMBER_OF_TABS = 3;
+    public static final CharSequence TITLES[]={"Pharms","Map","Meds"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initComponents();
+    }
 
+    private void initComponents() {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        adapter = new ViewPagerAdapter(getFragmentManager(),Titles,NumberOfTabs);
+        adapter = new ViewPagerAdapter(getFragmentManager(), TITLES, NUMBER_OF_TABS);
 
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
-        tabs =(SlidingTabLayout) findViewById(R.id.tabs);
+        tabs = (SlidingTabLayout) findViewById(R.id.tabs);
         tabs.setDistributeEvenly(true);
 
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
@@ -62,48 +68,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         mediLocation.connectApi();
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-       ft.disallowAddToBackStack();
-    }
-
-
 
     @Override
     protected void onPause() {
         super.onPause();
-//        mediLocation.stopLocationUpdates();
+        mediLocation.stopLocationUpdates();
     }
 
     @Override

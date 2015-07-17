@@ -4,7 +4,6 @@ package ro.laflamme.meditrack.fragment;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ro.laflamme.meditrack.db.DatabaseHelper;
+import ro.laflamme.meditrack.MarkerPharmManager;
 import ro.laflamme.meditrack.R;
 import ro.laflamme.meditrack.db.OrmFragment;
 import ro.laflamme.meditrack.domain.Pharm;
@@ -48,10 +47,7 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View v =inflater.inflate(R.layout.map_fragment, container, false);
-
-        return v;
+        return inflater.inflate(R.layout.map_fragment, container, false);
     }
 
 
@@ -64,7 +60,7 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
 
         googleMap.setOnInfoWindowClickListener(this);
 
-        new PopulateMap().execute(); // load markers
+        new PopulateMapAsyncTask().execute(); // load markers
     }
 
 
@@ -93,8 +89,9 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
                         .show();
             }
         }
-
     }
+
+
 
     @Override
     public void onResume() {
@@ -102,7 +99,7 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         initilizeMap();
     }
 
-    public class PopulateMap extends AsyncTask<Void,Void,Void>
+    public class PopulateMapAsyncTask extends AsyncTask<Void,Void,Void>
     {
 
         @Override
@@ -116,16 +113,12 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            for(Pharm pharm : pharmList)
-            {
-                Marker marker = googleMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(pharm.getLatitude(), pharm.getLongitude()))
-                        .title(pharm.getName()).snippet(pharm.getDesc())
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-                markersMap.put(marker,pharm);
-            }
+            MarkerPharmManager.syncMarkersWithPharms(pharmList, googleMap, markersMap);
         }
     }
+
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -158,7 +151,7 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         Pharm pharm = markersMap.get(marker);
         Bundle bundle = new Bundle();
         bundle.putSerializable("pharm", pharm);
-        MapDetailFragment dialog = new MapDetailFragment();
+        MapDialogFragment dialog = new MapDialogFragment();
         dialog.setArguments(bundle);
         dialog.show(getActivity());
 

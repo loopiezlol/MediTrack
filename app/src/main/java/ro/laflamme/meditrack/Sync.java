@@ -57,20 +57,20 @@ public class Sync {
         Log.d(TAG, "Building hashmap ...");
         Map<String, Pharm> map = new HashMap<>();
         for (Pharm localPharm : localPharms) {
-            map.put(localPharm.getRefference(), localPharm);
+            map.put(localPharm.getPlaceId(), localPharm);
         }
         Log.d(TAG, "Built hashmap with " + map.size() + " entries");
 
         int added = 0;
         for (Pharm placePharm : placesPharms) {
             Log.d(TAG, "Comparing " + placePharm.getName());
-            Pharm match = map.get(placePharm.getRefference());
+            Pharm match = map.get(placePharm.getPlaceId());
             if (match == null) {
                 Log.d(TAG, "Pharmacy " + placePharm.getName() + " is going to be added");
                 getHelper().getPharmDao().create(placePharm);
                 added++;
             } else {
-                Log.d(TAG, "Already have the " + match.getName() + " pharmacy, ignoring.");
+                Log.d(TAG, "Already got the " + match.getName() + " pharmacy, ignoring.");
             }
         }
         Log.d(TAG, "Sync completed. Added " + added + " pharmacies.");

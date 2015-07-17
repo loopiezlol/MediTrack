@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -24,6 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import ro.laflamme.meditrack.MediLocation;
+import ro.laflamme.meditrack.exception.NoGpsException;
 import ro.laflamme.meditrack.PharmDetailFragment;
 import ro.laflamme.meditrack.PharmsLoader;
 import ro.laflamme.meditrack.R;
@@ -35,8 +37,8 @@ import ro.laflamme.meditrack.domain.Pharm;
  */
 public class PharmsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Pharm>> {
 
-    private static final int LOADER_ID = 1;
     private static final String TAG = "PharmsFragment";
+    private static final int LOADER_ID = 1;
 
     private PharmsAdapter mAdapter;
     private FloatingActionButton mFab;
@@ -73,30 +75,41 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
             public void onClick(View v) {
                 final Sync sync = new Sync(getActivity());
                 final int RADIUS = 500;
-                final double LAT = mediLocation.getLatitude();
-                final double LNG = mediLocation.getLongitude();
 
-                es.submit(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            sync.syncPharms(RADIUS, LAT, LNG);
-                            getLoaderManager().restartLoader(LOADER_ID, null, PharmsFragment.this);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    final double LAT = mediLocation.getLatitude();
+                    final double LNG = mediLocation.getLongitude();
+
+                    es.submit(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                sync.syncPharms(RADIUS, LAT, LNG);
+                                getLoaderManager().restartLoader(LOADER_ID, null, PharmsFragment.this);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                });
+                    });
+
+
+
+                } catch (NoGpsException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), "You need GPS.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                boolean doubleClickThreat = SystemClock.elapsedRealtime() - mLastClickTime < 1000;
+                if (doubleClickThreat) {
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
+
                 openDetailFragment(position);
             }
         });
@@ -130,7 +143,6 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     public void onLoaderReset(Loader<List<Pharm>> loader) {
         Log.d(TAG, "onLoaderReset");
     }
-
 
 
     private void openDetailFragment(int position) {

@@ -10,6 +10,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import ro.laflamme.meditrack.domain.Pharm;
+import ro.laflamme.meditrack.util.DatabaseConfigUtil;
 
 /**
  * Created by loopiezlol on 19.04.2015.

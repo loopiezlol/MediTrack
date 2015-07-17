@@ -52,7 +52,7 @@ public class PharmsAdapter extends BaseAdapter {
 
         Pharm pharm = mPharms.get(position);
         holder.name.setText(pharm.getName());
-        holder.desc.setText(pharm.getDesc());
+        holder.desc.setText(pharm.getDesc() + pharm.isOpenNow());
 
         return convertView;
     }

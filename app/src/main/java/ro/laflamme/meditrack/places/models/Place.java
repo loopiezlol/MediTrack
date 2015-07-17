@@ -16,6 +16,7 @@ public class Place implements Parcelable {
 	private double mLongitude = 0;
 	private double mRating = 0;
 	private String mReference = "";
+	private boolean mOpenNow;
 
 	private PlaceDetails mDetails;
 	
@@ -27,6 +28,7 @@ public class Place implements Parcelable {
 		mLongitude = in.readDouble();
 		mRating = in.readDouble();
 		mReference = in.readString();
+		mOpenNow = in.readByte() != 0;
 		mDetails = in.readParcelable(PlaceDetails.class.getClassLoader());
 	}
 	
@@ -38,7 +40,8 @@ public class Place implements Parcelable {
 			mLongitude = jsonPlace.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
 //			mRating = jsonPlace.getDouble("rating");
 			mReference = jsonPlace.getString("reference");
-			
+			mOpenNow = jsonPlace.getJSONObject("opening_hours").getBoolean("open_now");
+
 			if (jsonPlace.has("vicinity")) {
 				mAddress = jsonPlace.getString("vicinity");
 			} else {
@@ -88,7 +91,15 @@ public class Place implements Parcelable {
 	public void setLongitude(double longitude) {
 		mLongitude = longitude;
 	}
-	
+
+	public boolean isOpenNow() {
+		return mOpenNow;
+	}
+
+	public void setOpenNow(boolean mOpenNow) {
+		this.mOpenNow = mOpenNow;
+	}
+
 	public double getDistanceTo(Location location) {
 		Location source = new Location("");
 		source.setLatitude(mLatitude);
@@ -133,6 +144,7 @@ public class Place implements Parcelable {
 		out.writeDouble(mLongitude);
 		out.writeDouble(mRating);
 		out.writeString(mReference);
+		out.writeByte((byte) (mOpenNow ? 1 : 0));
 		out.writeParcelable(mDetails, flags);
 	}
 	

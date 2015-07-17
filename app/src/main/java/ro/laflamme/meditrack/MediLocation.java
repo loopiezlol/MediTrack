@@ -5,7 +5,6 @@ import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -13,6 +12,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+
+import ro.laflamme.meditrack.exception.NoGpsException;
 
 /**
  * Created by motan on 17.05.2015.
@@ -111,11 +112,17 @@ public class MediLocation implements GoogleApiClient.ConnectionCallbacks, Google
 
     }
 
-    public double getLatitude() {
+    public double getLatitude() throws NoGpsException {
+        if (mLastLocation == null) {
+            throw new NoGpsException();
+        }
         return mLastLocation.getLatitude();
     }
 
-    public double getLongitude() {
+    public double getLongitude() throws NoGpsException {
+        if (mLastLocation == null) {
+            throw new NoGpsException();
+        }
         return mLastLocation.getLongitude();
     }
 
