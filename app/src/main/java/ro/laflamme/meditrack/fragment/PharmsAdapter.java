@@ -2,15 +2,25 @@ package ro.laflamme.meditrack.fragment;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.location.LocationManager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ro.laflamme.meditrack.MainActivity;
+import ro.laflamme.meditrack.MediLocation;
 import ro.laflamme.meditrack.R;
 import ro.laflamme.meditrack.domain.Pharm;
 
@@ -44,15 +54,47 @@ public class PharmsAdapter extends BaseAdapter {
 
             holder.name = (TextView) convertView.findViewById(R.id.pharm_name);
             holder.desc = (TextView) convertView.findViewById(R.id.pharm_desc);
+            holder.isOpen = (ImageView) convertView.findViewById(R.id.isopen_indicator);
+            holder.navHolder = (LinearLayout) convertView.findViewById(R.id.holder_nav);
+            holder.navDistance = (TextView) convertView.findViewById(R.id.nav_distance);
+
+
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Pharm pharm = mPharms.get(position);
+        final Pharm pharm = mPharms.get(position);
         holder.name.setText(pharm.getName());
-        holder.desc.setText(pharm.getDesc() + pharm.isOpenNow());
+        holder.desc.setText(pharm.getDesc());
+        //holder.navDistance.setText();
+
+
+
+
+
+        if(pharm.isOpenNow())
+        {
+            holder.isOpen.setColorFilter(Color.parseColor("#4CAF50"));
+        } else
+        {
+            holder.isOpen.setColorFilter(Color.parseColor("#FF5722"));
+        }
+
+
+        holder.navHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mContext instanceof MainActivity){
+                    ((MainActivity)mContext).goOnMap(pharm.getLatitude(),pharm.getLongitude());
+                }
+            }
+        });
+
+
+
+
 
         return convertView;
     }
@@ -75,6 +117,9 @@ public class PharmsAdapter extends BaseAdapter {
     private class ViewHolder {
         TextView name;
         TextView desc;
+        ImageView isOpen;
+        LinearLayout navHolder;
+        TextView navDistance;
     }
 
 

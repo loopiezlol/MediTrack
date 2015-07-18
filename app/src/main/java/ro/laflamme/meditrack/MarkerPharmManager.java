@@ -23,8 +23,14 @@ public class MarkerPharmManager {
             Marker marker = googleMap.addMarker(new MarkerOptions()
                     .title(pharm.getName())
                     .snippet(pharm.getDesc())
-                    .position(new LatLng(pharm.getLatitude(), pharm.getLongitude()))
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                    .position(new LatLng(pharm.getLatitude(), pharm.getLongitude())));
+
+            if(pharm.isOpenNow()){
+                    marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+            } else {
+                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+
+            }
             markersMap.put(marker,pharm);
         }
     }

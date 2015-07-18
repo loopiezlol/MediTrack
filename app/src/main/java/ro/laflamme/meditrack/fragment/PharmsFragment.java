@@ -93,7 +93,6 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
                     });
 
 
-
                 } catch (NoGpsException e) {
                     e.printStackTrace();
                     Toast.makeText(getActivity(), "You need GPS.", Toast.LENGTH_SHORT).show();
@@ -117,6 +116,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
         action = ((ActionBarActivity) getActivity()).getSupportActionBar();
         action.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
+
 
     }
 
@@ -148,8 +148,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     private void openDetailFragment(int position) {
         Pharm pharm = mAdapter.getItem(position);
         Bundle data = new Bundle();
-        data.putString("title", pharm.getName());
-        data.putString("desc", pharm.getDesc());
+        data.putSerializable("pharm",pharm);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         PharmDetailFragment detailFragment = new PharmDetailFragment();

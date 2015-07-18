@@ -1,7 +1,9 @@
 package ro.laflamme.meditrack.fragment;
 
 
+import android.location.Location;
 import android.os.AsyncTask;
+import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.app.FragmentManager;
@@ -16,12 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.SphericalUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,13 +41,15 @@ import ro.laflamme.meditrack.domain.Pharm;
 /**
  * Created by loopiezlol on 18.04.2015.
  */
-public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWindowClickListener {
+public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMapLoadedCallback{
 
     private static final String TAG = MapCustomFragment.class.getSimpleName();
     private GoogleMap googleMap;
     private Map<Marker,Pharm> markersMap = new HashMap<Marker,Pharm>();
     private ActionBar action;
     private List<Pharm> pharmList = new ArrayList<>();
+    private Location location;
+    private LatLng myLocation;
 
 
     @Override
@@ -60,7 +67,10 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
 
         googleMap.setOnInfoWindowClickListener(this);
 
+        googleMap.setOnMapLoadedCallback(this);
         new PopulateMapAsyncTask().execute(); // load markers
+
+
     }
 
 
@@ -88,6 +98,8 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
                         "Sorry! unable to create maps", Toast.LENGTH_SHORT)
                         .show();
             }
+
+
         }
     }
 
@@ -97,6 +109,14 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
     public void onResume() {
         super.onResume();
         initilizeMap();
+    }
+
+    @Override
+    public void onMapLoaded() {
+        if(googleMap!=null){
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(googleMap.getMyLocation().getLatitude(),googleMap.getMyLocation().getLongitude()),14.0f));
+
+        }
     }
 
     public class PopulateMapAsyncTask extends AsyncTask<Void,Void,Void>
@@ -156,5 +176,26 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         dialog.show(getActivity());
 
     }
+
+    public void focusMap(double latitude, double longitude){
+        LatLng latLng = new LatLng(latitude,longitude);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+    }
+
+    public String computeDistance(double latitude, double longitude){
+
+
+        LatLng latLng = new LatLng(latitude,longitude);
+        LatLng myLatLng = new LatLng(googleMap.getMyLocation().getLatitude(),googleMap.getMyLocation().getLongitude());
+
+        Double distance = SphericalUtil.computeDistanceBetween(myLatLng,latLng);
+
+
+
+        return Double.toString(distance)+" km";
+    }
+
+
+
 
 }
