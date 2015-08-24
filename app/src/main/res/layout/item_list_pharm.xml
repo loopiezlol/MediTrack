@@ -6,87 +6,79 @@
     android:layout_height="72dp"
     android:background="@drawable/custom_bg">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/img"
-            android:id="@+id/isopen_indicator"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_centerVertical="true"/>
+    <ImageView
+        android:id="@+id/isopen_indicator"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/circle" />
 
     <LinearLayout
+        android:id="@+id/holder_nav"
         android:layout_width="62dp"
         android:layout_height="72dp"
-        android:orientation="vertical"
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/holder_nav"
+        android:orientation="vertical"
         android:paddingTop="16dp">
 
 
         <ImageView
+            android:id="@+id/pharm_map_navigation"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="center"
-            android:layout_centerVertical="true"
-            android:id="@+id/pharm_map_navigation"
-            android:src="@drawable/ic_map_marker_color"
+            android:src="@drawable/ic_map_marker_grey600_36dp"
             />
 
         <TextView
+            android:id="@+id/nav_distance"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="center_vertical"
-            android:textSize="10dp"
             android:text="10 km"
-            android:id="@+id/nav_distance"
-            />
+            android:textSize="10dp" />
+
+
     </LinearLayout>
 
-tr
-        
-        
-        
-        <LinearLayout
-            android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/text_container"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_toLeftOf="@id/holder_nav"
+        android:layout_toRightOf="@id/isopen_indicator"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/pharm_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:singleLine="true"
+            android:textSize="16sp"
+            tools:text="Two-line item" />
+
+        <TextView
+            android:id="@+id/pharm_desc"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/text_container"
-            android:orientation="vertical"
-            android:paddingTop="20dp"
-            android:layout_toRightOf="@id/isopen_indicator"
-            android:layout_toLeftOf="@id/holder_nav">
-            
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/pharm_name"
-                tools:text="Two-line item"
-                android:fontFamily="sans-serif"
-                android:textSize="16sp"
-                android:singleLine="true"
-                />
+            android:fontFamily="sans-serif"
+            android:singleLine="true"
+            android:textSize="14sp"
+            tools:text="Secondary text" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/pharm_desc"
-                tools:text="Secondary text"
-                android:fontFamily="sans-serif"
-                android:textSize="14sp"
-                android:singleLine="true"
-                />
-            
-        </LinearLayout>
-        
+    </LinearLayout>
 
 
-
-        
-
-    </RelativeLayout>
+</RelativeLayout>
 

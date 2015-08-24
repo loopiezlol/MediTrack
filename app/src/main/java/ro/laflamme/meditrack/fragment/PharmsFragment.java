@@ -43,8 +43,8 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     private PharmsAdapter mAdapter;
     private FloatingActionButton mFab;
     private ListView mListView;
-    private long mLastClickTime =0;
-    android.support.v7.app.ActionBar action;
+    private long mLastClickTime = 0;
+    private android.support.v7.app.ActionBar mActionBar;
 
 
     @Override
@@ -113,8 +113,8 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
             }
         });
 
-        action = ((ActionBarActivity) getActivity()).getSupportActionBar();
-        action.setDisplayHomeAsUpEnabled(false);
+        mActionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(false);
         setHasOptionsMenu(true);
 
 
@@ -136,7 +136,8 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     public void onLoadFinished(Loader<List<Pharm>> loader, List<Pharm> data) {
         Log.d(TAG, "onLoadFinished");
         mAdapter.setData(data);
-        mAdapter.notifyDataSetChanged();}
+        mAdapter.notifyDataSetChanged();
+    }
 
 
     @Override
@@ -148,7 +149,7 @@ public class PharmsFragment extends Fragment implements LoaderManager.LoaderCall
     private void openDetailFragment(int position) {
         Pharm pharm = mAdapter.getItem(position);
         Bundle data = new Bundle();
-        data.putSerializable("pharm",pharm);
+        data.putSerializable("pharm", pharm);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         PharmDetailFragment detailFragment = new PharmDetailFragment();

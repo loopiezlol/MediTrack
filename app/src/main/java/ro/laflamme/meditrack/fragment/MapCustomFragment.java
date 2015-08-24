@@ -3,7 +3,6 @@ package ro.laflamme.meditrack.fragment;
 
 import android.location.Location;
 import android.os.AsyncTask;
-import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.app.FragmentManager;
@@ -21,11 +20,8 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.ArrayList;
@@ -41,11 +37,11 @@ import ro.laflamme.meditrack.domain.Pharm;
 /**
  * Created by loopiezlol on 18.04.2015.
  */
-public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMapLoadedCallback{
+public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWindowClickListener {
 
     private static final String TAG = MapCustomFragment.class.getSimpleName();
-    private GoogleMap googleMap;
-    private Map<Marker,Pharm> markersMap = new HashMap<Marker,Pharm>();
+    private GoogleMap mMap;
+    private Map<Marker, Pharm> markersMap = new HashMap<Marker, Pharm>();
     private ActionBar action;
     private List<Pharm> pharmList = new ArrayList<>();
     private Location location;
@@ -59,24 +55,16 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
 
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
 
         initilizeMap();
-
-        googleMap.setMyLocationEnabled(true);
-
-        googleMap.setOnInfoWindowClickListener(this);
-
-        googleMap.setOnMapLoadedCallback(this);
-        new PopulateMapAsyncTask().execute(); // load markers
 
 
     }
 
 
-
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         action = ((ActionBarActivity) getActivity()).getSupportActionBar();
         //action.setDisplayHomeAsUpEnabled(false);
@@ -84,25 +72,27 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         action.invalidateOptionsMenu();
 
 
-
     }
 
 
-    private void initilizeMap(){
-        if (googleMap == null) {
-            googleMap = getMapFragment().getMap();
+    private void initilizeMap() {
+        if (mMap == null) {
+            mMap = getMapFragment().getMap();
 
 
-            if (googleMap == null) {
+            if (mMap == null) {
                 Toast.makeText(getActivity(),
                         "Sorry! unable to create maps", Toast.LENGTH_SHORT)
                         .show();
+                return;
             }
 
+            mMap.setMyLocationEnabled(true);
+            mMap.setOnInfoWindowClickListener(this);
+            new LoadMarkersAsync().execute();
 
         }
     }
-
 
 
     @Override
@@ -111,16 +101,8 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         initilizeMap();
     }
 
-    @Override
-    public void onMapLoaded() {
-        if(googleMap!=null){
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(googleMap.getMyLocation().getLatitude(),googleMap.getMyLocation().getLongitude()),14.0f));
 
-        }
-    }
-
-    public class PopulateMapAsyncTask extends AsyncTask<Void,Void,Void>
-    {
+    public class LoadMarkersAsync extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -133,10 +115,9 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            MarkerPharmManager.syncMarkersWithPharms(pharmList, googleMap, markersMap);
+            MarkerPharmManager.syncMarkersWithPharms(pharmList, mMap, markersMap);
         }
     }
-
 
 
     @Override
@@ -177,25 +158,22 @@ public class MapCustomFragment extends OrmFragment implements GoogleMap.OnInfoWi
 
     }
 
-    public void focusMap(double latitude, double longitude){
-        LatLng latLng = new LatLng(latitude,longitude);
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+    public void focusMap(double latitude, double longitude) {
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
     }
 
-    public String computeDistance(double latitude, double longitude){
+    public String computeDistance(double latitude, double longitude) {
 
 
-        LatLng latLng = new LatLng(latitude,longitude);
-        LatLng myLatLng = new LatLng(googleMap.getMyLocation().getLatitude(),googleMap.getMyLocation().getLongitude());
+        LatLng latLng = new LatLng(latitude, longitude);
+        LatLng myLatLng = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
 
-        Double distance = SphericalUtil.computeDistanceBetween(myLatLng,latLng);
+        Double distance = SphericalUtil.computeDistanceBetween(myLatLng, latLng);
 
 
-
-        return Double.toString(distance)+" km";
+        return Double.toString(distance) + " km";
     }
-
-
 
 
 }
