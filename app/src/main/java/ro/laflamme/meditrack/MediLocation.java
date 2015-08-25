@@ -18,7 +18,7 @@ import ro.laflamme.meditrack.exception.NoGpsException;
 /**
  * Created by motan on 17.05.2015.
  */
-public class MediLocation implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class MediLocation implements  GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private static final String TAG = "MediLocation";
     private static int REQUEST_CODE_RECOVER_PLAY_SERVICES = 200;
@@ -30,27 +30,25 @@ public class MediLocation implements GoogleApiClient.ConnectionCallbacks, Google
     private Location mLastLocation;
     private LocationRequest mLocationRequest;
 
-    public static MediLocation getInstance(Context mContext) {
+    public static MediLocation getInstance(Context mContext, GoogleApiClient.ConnectionCallbacks connectionCallbacks) {
         if (mInstance == null) {
-            return new MediLocation(mContext);
+            return new MediLocation(mContext, connectionCallbacks);
         }
         return mInstance;
     }
 
-    public MediLocation(Context mContext) {
+    public MediLocation(Context mContext, GoogleApiClient.ConnectionCallbacks connectionCallbacks) {
         this.mContext = mContext;
 
         if (checkGooglePlayServices()) {
-            buildGoogleApiClient();
-
-            //prepare connection request
+            buildGoogleApiClient(connectionCallbacks);
             createLocationRequest();
         }
 
         connectApi();
     }
 
-    protected void connectApi() {
+    public void connectApi() {
         if (mGoogleApiClient != null) {
             mGoogleApiClient.connect();
         }
@@ -77,9 +75,9 @@ public class MediLocation implements GoogleApiClient.ConnectionCallbacks, Google
     }
 
 
-    protected synchronized void buildGoogleApiClient() {
+    protected synchronized void buildGoogleApiClient(GoogleApiClient.ConnectionCallbacks connectionCallbacks) {
         mGoogleApiClient = new GoogleApiClient.Builder(mContext)
-                .addConnectionCallbacks(this)
+                .addConnectionCallbacks(connectionCallbacks)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
@@ -94,58 +92,34 @@ public class MediLocation implements GoogleApiClient.ConnectionCallbacks, Google
     }
 
 
-    protected void startLocationUpdates() {
+    public void startLocationUpdates() {
         LocationServices.FusedLocationApi.requestLocationUpdates(
                 mGoogleApiClient, mLocationRequest, this);
     }
 
-    @Override
-    public void onConnected(Bundle bundle) {
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
-//            Toast.makeText(mContext, "Latitude:" + mLastLocation.getLatitude() + ", Longitude:" + mLastLocation.getLongitude(), Toast.LENGTH_LONG).show();
-            Log.d(TAG, "Latitude:" + mLastLocation.getLatitude() + ", Longitude:" + mLastLocation.getLongitude());
-        }
-
-        startLocationUpdates();
-
-    }
-
-    public double getLatitude() throws NoGpsException {
-        if (mLastLocation == null) {
-            throw new NoGpsException();
-        }
+    public double getLatitude(){
         return mLastLocation.getLatitude();
     }
 
-    public double getLongitude() throws NoGpsException {
-        if (mLastLocation == null) {
-            throw new NoGpsException();
-        }
+    public double getLongitude(){
         return mLastLocation.getLongitude();
     }
 
 
-
-
-    protected void stopLocationUpdates() {
+    public void stopLocationUpdates() {
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(
                     mGoogleApiClient, this);
         }
     }
 
-    protected void disconnectApi() {
+    public void disconnectApi() {
         if (mGoogleApiClient != null) {
             mGoogleApiClient.disconnect();
         }
     }
 
-    @Override
-    public void onConnectionSuspended(int i) {
 
-    }
 
     @Override
     public void onLocationChanged(android.location.Location location) {
@@ -157,5 +131,10 @@ public class MediLocation implements GoogleApiClient.ConnectionCallbacks, Google
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
+    }
+
+    public void syncLastLocation() {
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
     }
 }

@@ -24,10 +24,9 @@ public class MainActivity extends ActionBarActivity {
     private ViewPagerAdapter adapter;
     private SlidingTabLayout tabs;
     public DatabaseHelper dbHelper;
-    private MediLocation mediLocation;
 
-    public static final int NUMBER_OF_TABS = 3;
-    public static final CharSequence TITLES[]={"Pharms","Map","Meds"};
+    public static final CharSequence TITLES[]={"Pharms","Map"};
+    public static final int NUMBER_OF_TABS = TITLES.length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,27 +75,23 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        mediLocation = MediLocation.getInstance(this);
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        mediLocation.connectApi();
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
-        mediLocation.stopLocationUpdates();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mediLocation.disconnectApi();
     }
 
     @Override

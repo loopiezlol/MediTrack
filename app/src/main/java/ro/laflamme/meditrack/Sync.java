@@ -46,34 +46,34 @@ public class Sync {
             e.printStackTrace();
             Log.d(TAG, e.getMessage());
         }
-        Log.d(TAG, "Query complete. Found " + placesPharms.size() + " entries");
+        Log.v(TAG, "Query complete. Found " + placesPharms.size() + " entries");
         listPharmacies(placesPharms);
 
-        Log.d(TAG, "Querying local pharms...");
+        Log.v(TAG, "Querying local pharms...");
         List<Pharm> localPharms = getHelper().getPharmDao().queryForAll();
-        Log.d(TAG, "Query complete. Found " + localPharms.size() + " entries");
+        Log.v(TAG, "Query complete. Found " + localPharms.size() + " entries");
         listPharmacies(localPharms);
 
-        Log.d(TAG, "Building hashmap ...");
+        Log.v(TAG, "Building hashmap ...");
         Map<String, Pharm> map = new HashMap<>();
         for (Pharm localPharm : localPharms) {
             map.put(localPharm.getPlaceId(), localPharm);
         }
-        Log.d(TAG, "Built hashmap with " + map.size() + " entries");
+        Log.v(TAG, "Built hashmap with " + map.size() + " entries");
 
         int added = 0;
         for (Pharm placePharm : placesPharms) {
-            Log.d(TAG, "Comparing " + placePharm.getName());
+            Log.v(TAG, "Comparing " + placePharm.getName());
             Pharm match = map.get(placePharm.getPlaceId());
             if (match == null) {
-                Log.d(TAG, "Pharmacy " + placePharm.getName() + " is going to be added");
+                Log.v(TAG, "Pharmacy " + placePharm.getName() + " is going to be added");
                 getHelper().getPharmDao().create(placePharm);
                 added++;
             } else {
-                Log.d(TAG, "Already got the " + match.getName() + " pharmacy, ignoring.");
+                Log.v(TAG, "Already got the " + match.getName() + " pharmacy, ignoring.");
             }
         }
-        Log.d(TAG, "Sync completed. Added " + added + " pharmacies.");
+        Log.v(TAG, "Sync completed. Added " + added + " pharmacies.");
 
 
         listPharmacies(getHelper().getPharmDao().queryForAll());
@@ -101,7 +101,7 @@ public class Sync {
 
     public void listPharmacies(List<Pharm> ps) {
         for (Pharm p : ps) {
-            Log.d(TAG, "Pharmacy [" + p.getName() + "}");
+            Log.v(TAG, "Pharmacy [" + p.getName() + "}");
         }
     }
 
